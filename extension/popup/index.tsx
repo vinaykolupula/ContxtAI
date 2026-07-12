@@ -51,9 +51,12 @@ export default function Popup() {
         let all = await getAllBundles();
         if (all.length === 0) {
           const starterBundle = await createBundle({
-            name: "Developer Starter", description: "Default developer context",
-            identity: { name: "Developer", role: "Software Engineer" },
-            fields: [{ id: "1", label: "Preferences", content: "Prefer functional programming and strict TypeScript.", weight: 10, tags: ["coding"] }]
+            name: "My Personal Profile", description: "A default context profile for everyday tasks.",
+            identity: { name: "Your Name", role: "Professional" },
+            fields: [
+              { id: "1", label: "Writing Tone", content: "I prefer clear, concise, and professional language without overly complex jargon.", weight: 10, tags: ["writing", "general"] },
+              { id: "2", label: "Formatting", content: "Please use bullet points when listing multiple items to make it easy to read.", weight: 8, tags: ["formatting", "general"] }
+            ]
           });
           all = [starterBundle];
         }
@@ -70,10 +73,20 @@ export default function Popup() {
   };
 
   const [importJson, setImportJson] = useState("");
-  const [showImport, setShowImport] = useState(false);
+  const [showImport, setShowImport] = useState(() => localStorage.getItem("contxtai_showImport") === "true");
+
+  useEffect(() => {
+    if (showImport) {
+      localStorage.setItem("contxtai_showImport", "true");
+    } else {
+      localStorage.removeItem("contxtai_showImport");
+    }
+  }, [showImport]);
+
   const [importTarget, setImportTarget] = useState<"existing" | "new">("existing");
   const [newProfileName, setNewProfileName] = useState("");
   const [canScroll, setCanScroll] = useState(false);
+  const [needsReload, setNeedsReload] = useState(false);
   const [tokenStats, setTokenStats] = useState<{ estimatedTokens: number, maxTokens: number, fieldsCount: number, totalFields: number } | null>(null);
 
   // Proactively compose context to calculate token stats for the visualizer
@@ -180,14 +193,18 @@ export default function Popup() {
       // Copy to clipboard
       await navigator.clipboard.writeText(formatted);
 
-      // Auto-inject if on a known platform
-      if (detectedPlatform && chrome && chrome.tabs) {
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-          if (tabs[0]?.id) {
-            chrome.tabs.sendMessage(tabs[0].id, { action: "INJECT_CONTEXT", context: formatted });
-          }
-        });
-      }
+    // Auto-inject if on a known platform
+    if (detectedPlatform && chrome && chrome.tabs) {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        if (tabs[0]?.id) {
+          chrome.tabs.sendMessage(tabs[0].id, { action: "INJECT_CONTEXT", context: formatted }, (res) => {
+            if (chrome.runtime.lastError) {
+              setNeedsReload(true);
+            }
+          });
+        }
+      });
+    }
 
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -219,7 +236,11 @@ export default function Popup() {
       if (detectedPlatform && chrome && chrome.tabs) {
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
           if (tabs[0]?.id) {
-            chrome.tabs.sendMessage(tabs[0].id, { action: "INJECT_CONTEXT", context: formatted });
+            chrome.tabs.sendMessage(tabs[0].id, { action: "INJECT_CONTEXT", context: formatted }, (res) => {
+              if (chrome.runtime.lastError) {
+                setNeedsReload(true);
+              }
+            });
           }
         });
       }
@@ -261,6 +282,11 @@ Output ONLY valid JSON inside a \`\`\`json block. Do not include any preamble, c
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         if (tabs[0]?.id) {
           chrome.tabs.sendMessage(tabs[0].id, { action: "INJECT_CONTEXT", context: prompt }, (res) => {
+            if (chrome.runtime.lastError) {
+              setDistilling(false);
+              setNeedsReload(true);
+              return;
+            }
             setTimeout(() => {
               setDistilling(false);
               setShowImport(true); // Open the inline import window
@@ -529,7 +555,7 @@ Output ONLY valid JSON inside a \`\`\`json block. Do not include any preamble, c
             </div>
 
             {/* Context Fade Warning */}
-            {chatLength > 8 && (
+            {chatLength > 25 && (
               <div style={{
                 padding: "16px", borderRadius: "6px",
                 backgroundColor: "#232323", border: "1px solid #333333",
@@ -569,6 +595,15 @@ Output ONLY valid JSON inside a \`\`\`json block. Do not include any preamble, c
 
       {!showImport && (
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          {needsReload && (
+            <div style={{ 
+              backgroundColor: "rgba(255, 77, 79, 0.1)", color: "#ff4d4f", 
+              border: "1px solid #ff4d4f", padding: "10px", borderRadius: "6px", 
+              fontSize: "13px", fontWeight: "500", textAlign: "center", marginBottom: "4px"
+            }}>
+              ⚠️ Connection lost! Please refresh the webpage to use ContxtAI.
+            </div>
+          )}
           <button
             onClick={handleActivate}
             disabled={!activeBundleId}

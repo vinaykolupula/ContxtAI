@@ -128,7 +128,7 @@ AIs suffer from "lost in the middle" syndrome. If a chat gets too long, the AI s
 
 <p align="center"><img src="./extension/assets/fade-warning.png" alt="Fade Warning UI" /></p>
 
-💡 **Use Case:** You've been debugging for 15 messages and the AI forgets to use initial instructions. Open the ContxtAI popup, see the Fade Warning, and click **"Re-inject coding"** to refresh its memory.
+💡 **Use Case:** You've been debugging for 30 messages and the AI forgets to use initial instructions. Open the ContxtAI popup, see the Fade Warning, and click **"Re-inject coding"** to refresh its memory.
 
 ---
 
@@ -148,6 +148,17 @@ ContxtAI will never:
 
 ### Cross-Platform AI Continuity
 Move between AI platforms without losing important project context. Continue your conversations seamlessly across multiple models and workflows.
+
+---
+
+### Stale Page Recovery (Context Invalidated)
+If the ContxtAI extension receives a background update while you have tabs open, the browser disconnects those old tabs from the extension. ContxtAI gracefully detects this "Context Invalidated" state.
+
+<p align="center">
+  <img src="./extension/assets/context-invalidated.png" alt="Context Invalidated Warning UI" />  
+</p>
+
+💡 **Use Case:** You leave a ChatGPT tab open overnight. The next day, ContxtAI updates to a new version. You click "Inject Context", but instead of silently failing, the popup shows a red warning instructing you to hit refresh to restore the connection.
 
 ---
 
@@ -198,7 +209,7 @@ More platforms are planned:
 - [Node.js](https://nodejs.org/) (v18 or higher recommended)
 - [pnpm](https://pnpm.io/) (v8 or higher)
 
-### Installation
+### 🚀 Installation & Build Guide
 
 1. Clone the repository:
    ```bash
@@ -211,6 +222,14 @@ More platforms are planned:
    pnpm install
    ```
 
+3. Build the core engine:
+   ```bash
+   pnpm --filter @contxtai/core build
+   ```
+   *(Note: The core engine must be compiled first so the extension can resolve it during development and production builds).*
+
+> **Note:** If your terminal throws a `command not found: pnpm` error, it means your global npm `$PATH` is not configured. You can bypass this by prepending `npx` to the commands (e.g., `npx pnpm install`, `npx pnpm --filter @contxtai/core build`, etc.).
+
 ### Development Mode
 
 To start the extension in development mode with Hot Module Replacement (HMR):
@@ -218,6 +237,7 @@ To start the extension in development mode with Hot Module Replacement (HMR):
 ```bash
 # Start the Plasmo dev server
 pnpm --filter extension dev
+# (Or use 'npx pnpm --filter extension dev' if pnpm is not in your PATH)
 ```
 
 1. Open your Chromium-based browser (Chrome, Edge, Brave, Arc).
@@ -233,9 +253,11 @@ To build the optimized, minified production ZIP file for the Chrome Web Store:
 ```bash
 # Build the production assets
 pnpm --filter extension build
+# (Or use 'npx pnpm --filter extension build' if pnpm is not in your PATH)
 
 # Package into a deployable zip file
 pnpm --filter extension package
+# (Or use 'npx pnpm --filter extension package' if pnpm is not in your PATH)
 ```
 The deployable zip file will be located in `extension/build/`.
 

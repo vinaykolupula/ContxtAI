@@ -154,6 +154,7 @@ AI Tool
 - Display the activation popup with the current bundle name, a bundle switcher, and an inject button
 - On activation, call into the Context Engine and pass the result to the appropriate ContextBridge
 - Handle copy-to-clipboard as a fallback for platforms without a ContextBridge
+- Gracefully handle **Stale Page Recovery ("Context Invalidated")** errors by detecting `chrome.runtime.lastError` and prompting the user to refresh when background scripts update.
 
 **Key files:**
 

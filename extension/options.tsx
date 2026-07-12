@@ -364,7 +364,7 @@ function HelpDocs() {
               <span style={{ marginRight: "6px" }}>🧠</span> Context Fade Warning
             </div>
             <p style={{ margin: "0 0 12px 0", fontSize: "12px", color: "#a1a1aa", lineHeight: "1.5" }}>
-              This conversation is getting long (12 messages). The AI might start forgetting your core guidelines due to the "lost in the middle" effect.
+              This conversation is getting long (25 messages). The AI might start forgetting your core guidelines due to the "lost in the middle" effect.
             </p>
             <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
               <div style={{ padding: "6px 10px", backgroundColor: "#2a2a2a", color: "#ededed", border: "1px solid #333333", borderRadius: "4px", fontSize: "11px", userSelect: "none" }}>Re-inject "coding"</div>
@@ -375,7 +375,7 @@ function HelpDocs() {
 
         <div style={{ backgroundColor: "#181818", padding: "12px 16px", borderRadius: "6px", marginBottom: "32px", border: "1px solid #2e2e2e" }}>
           <strong style={{ color: "#3ecf8e", fontSize: "13px", display: "block", marginBottom: "4px" }}>💡 Use Case:</strong>
-          <span style={{ fontSize: "13px", color: "#a1a1aa" }}>You've been debugging for 15 messages and the AI suddenly forgets to use TypeScript. You open the ContxtAI popup, see the Fade Warning, and click the <strong>"Re-inject coding"</strong> button to quickly refresh its memory of your coding rules without overwhelming it with your entire profile.</span>
+          <span style={{ fontSize: "13px", color: "#a1a1aa" }}>You've been debugging for 30 messages and the AI suddenly forgets to use TypeScript. You open the ContxtAI popup, see the Fade Warning, and click the <strong>"Re-inject coding"</strong> button to quickly refresh its memory of your coding rules without overwhelming it with your entire profile.</span>
         </div>
 
         {/* Feature 8: Local Privacy Scrubber & Detection */}
@@ -404,7 +404,7 @@ function HelpDocs() {
           <div style={{ width: "100%", maxWidth: "340px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <div style={{ color: "#3ecf8e", fontSize: "20px", fontWeight: "bold" }}>C</div>
-              <div style={{ color: "#ededed", fontSize: "16px", fontWeight: "600" }}>ContxtAI</div>
+                <div style={{ color: "#ededed", fontSize: "16px", fontWeight: "600" }}>ContxtAI</div>
             </div>
             <div style={{ textAlign: "right" }}>
               <div style={{ fontSize: "10px", color: "#a1a1aa", fontWeight: "600", letterSpacing: "1px" }}>DETECTED</div>
@@ -413,9 +413,32 @@ function HelpDocs() {
           </div>
         </div>
 
-        <div style={{ backgroundColor: "#181818", padding: "12px 16px", borderRadius: "6px", marginBottom: "0", border: "1px solid #2e2e2e" }}>
+        <div style={{ backgroundColor: "#181818", padding: "12px 16px", borderRadius: "6px", marginBottom: "32px", border: "1px solid #2e2e2e" }}>
           <strong style={{ color: "#3ecf8e", fontSize: "13px", display: "block", marginBottom: "4px" }}>💡 Use Case:</strong>
           <span style={{ fontSize: "13px", color: "#a1a1aa" }}>You accidentally highlight a block of code containing your database password and hit save. ContxtAI catches it instantly, warns you with a yellow alert in the popup, and masks the password as <code>[MASKED_PASSWORD]</code> so it never reaches the cloud.</span>
+        </div>
+
+        {/* Feature 9: Stale Page Recovery */}
+        <h3 style={{ fontSize: "15px", color: "#ededed", marginBottom: "8px" }}>9. Stale Page Recovery (Context Invalidated)</h3>
+        <p style={{ fontSize: "14px", color: "#a1a1aa", marginBottom: "16px", marginTop: 0 }}>
+          If the ContxtAI extension gets an update in the background, your old open web pages will lose connection to the core engine. ContxtAI gracefully detects this "Context Invalidated" error and prompts you to refresh the page before using the AI.
+        </p>
+
+        {/* Mock UI: Stale Page Warning */}
+        <div style={{ backgroundColor: "#1c1c1c", padding: "16px", borderRadius: "8px", border: "1px solid #333", marginBottom: "16px", display: "flex", justifyContent: "center" }}>
+          <div style={{ width: "100%", maxWidth: "340px", padding: "16px", borderRadius: "6px", backgroundColor: "#232323", border: "1px solid #333333" }}>
+            <div style={{ backgroundColor: "rgba(255, 77, 79, 0.1)", color: "#ff4d4f", border: "1px solid #ff4d4f", padding: "10px", borderRadius: "6px", fontSize: "13px", fontWeight: "500", textAlign: "center", marginBottom: "12px" }}>
+              ⚠️ Connection lost! Please refresh the webpage to use ContxtAI.
+            </div>
+            <button style={{ width: "100%", padding: "10px", backgroundColor: "#3ecf8e", color: "#1c1c1c", border: "none", borderRadius: "6px", fontSize: "14px", fontWeight: "500" }}>
+              Inject Selected Context
+            </button>
+          </div>
+        </div>
+
+        <div style={{ backgroundColor: "#181818", padding: "12px 16px", borderRadius: "6px", marginBottom: "0", border: "1px solid #2e2e2e" }}>
+          <strong style={{ color: "#3ecf8e", fontSize: "13px", display: "block", marginBottom: "4px" }}>💡 Use Case:</strong>
+          <span style={{ fontSize: "13px", color: "#a1a1aa" }}>You leave a ChatGPT tab open overnight. The next day, ContxtAI updates to a new version. You click "Inject Context", but instead of silently failing, the popup shows a red warning instructing you to hit refresh.</span>
         </div>
       </div>
     </div>
@@ -532,7 +555,7 @@ function BundleEditor({ bundle, onSave, onDelete }: any) {
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px", marginBottom: "24px" }}>
         <div>
           <label style={{ display: "block", marginBottom: "8px", color: "#a1a1aa", fontSize: "13px", fontWeight: "500" }}>Name</label>
-          <input style={inputStyle} value={editingBundle.name} onChange={e => handleChange("name", e.target.value)} placeholder="e.g. Developer Starter" />
+          <input style={inputStyle} value={editingBundle.name} onChange={e => handleChange("name", e.target.value)} placeholder="e.g. My Personal Profile" />
         </div>
         <div>
           <label style={{ display: "block", marginBottom: "8px", color: "#a1a1aa", fontSize: "13px", fontWeight: "500" }}>Description</label>

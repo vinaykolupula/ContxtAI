@@ -10,7 +10,7 @@
     "core",
     "extension"
   ],
-  "dependencies": {
-    "sharp": "^0.35.2"
+  "resolutions": {
+    "sharp": "^0.35.3"
   }
 }

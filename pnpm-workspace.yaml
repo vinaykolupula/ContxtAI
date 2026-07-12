@@ -1,0 +1,10 @@
+packages:
+  - 'core'
+  - 'extension'
+allowBuilds:
+  '@parcel/watcher': false
+  '@swc/core': false
+  esbuild: false
+  lmdb: false
+  msgpackr-extract: false
+  sharp: false

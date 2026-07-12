@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "esModuleInterop": true
+  },
+  "references": [
+    { "path": "./core" }
+  ],
+  "include": [
+    ".plasmo/index.d.ts"
+  ]
+}

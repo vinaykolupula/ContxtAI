@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./extension/assets/contxtai-banner.jpg" alt="ContxtAI Banner" />
+  <img src="./extension/assets/contxtai-wide-banner.jpg" alt="ContxtAI Banner" />
 
   <br/>
   
@@ -8,12 +8,11 @@
   [![Architecture](https://img.shields.io/badge/architecture-Plasmo%20%7C%20React%20%7C%20TypeScript-orange)]()
 </div>
 
+<h1 align="center"><a href="https://contxtai.vinaykolupula.workers.dev/">ContxtAI</a></h1>
+
 <h2 align="center">Your Privacy-First Browser Extension for AI Context Management.</h2>
 
 <br/>
-
-# ContxtAI
-
 ContxtAI is a lightweight, privacy-focused browser extension that gives you ownership of your AI context.
 
 Create reusable context profiles containing your projects, preferences, writing styles, goals, and workflows, then inject them into any supported AI platform with a single click.
@@ -50,7 +49,7 @@ This creates several problems:
 
 ## The Solution
 
-<img src="./extension/assets/port-your-ai-context.jpg" alt="ContxtAI Banner" />
+<img src="./extension/assets/contxtai-banner.jpg" alt="ContxtAI Banner" />
 
 <br/>
 
@@ -213,7 +212,7 @@ More platforms are planned:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/contxtai.git
+   git clone https://github.com/vinaykolupula/contxtai.git
    cd contxtai
    ```
 

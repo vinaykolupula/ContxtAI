@@ -9,7 +9,7 @@
     "package": "plasmo package"
   },
   "manifest": {
-    "permissions": ["activeTab", "storage"]
+    "permissions": ["activeTab"]
   },
   "dependencies": {
     "@contxtai/core": "workspace:*",

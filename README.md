@@ -10,6 +10,12 @@
 
 <h1 align="center"><a href="https://contxtai.vinaykolupula.workers.dev/">ContxtAI</a></h1>
 
+<div align="center">
+  <a href="https://chromewebstore.google.com/detail/contxtai/dmhnnfkppbobolkngkblakklfhigbidh">
+    <img src="https://img.shields.io/chrome-web-store/v/dmhnnfkppbobolkngkblakklfhigbidh?label=Add%20to%20Chrome&color=1a73e8&logo=googlechrome&logoColor=white&style=for-the-badge" alt="Add to Chrome" />
+  </a>
+</div>
+
 <h2 align="center">Your Privacy-First Browser Extension for AI Context Management.</h2>
 
 <br/>

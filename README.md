@@ -14,6 +14,10 @@
   <a href="https://chromewebstore.google.com/detail/contxtai/dmhnnfkppbobolkngkblakklfhigbidh">
     <img src="https://img.shields.io/chrome-web-store/v/dmhnnfkppbobolkngkblakklfhigbidh?label=Add%20to%20Chrome&color=1a73e8&logo=googlechrome&logoColor=white&style=for-the-badge" alt="Add to Chrome" />
   </a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://www.producthunt.com/products/contxtai?utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-contxtai" target="_blank">
+    <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1206368&theme=light" alt="ContxtAI - Product Hunt" width="200" />
+  </a>
 </div>
 
 <h2 align="center">Your Privacy-First Browser Extension for AI Context Management.</h2>

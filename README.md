@@ -8,11 +8,11 @@
   [![Architecture](https://img.shields.io/badge/architecture-Plasmo%20%7C%20React%20%7C%20TypeScript-orange)]()
 </div>
 
-<h1 align="center"><a href="https://contxtai.vinaykolupula.workers.dev/">ContxtAI</a></h1>
+<h1 align="center"><a href="https://contxtai.vinaykolupula.com/">ContxtAI</a></h1>
 
 <div align="center">
   <a href="https://chromewebstore.google.com/detail/contxtai/dmhnnfkppbobolkngkblakklfhigbidh">
-    <img src="https://img.shields.io/chrome-web-store/v/dmhnnfkppbobolkngkblakklfhigbidh?label=Add%20to%20Chrome&color=1a73e8&logo=googlechrome&logoColor=white&style=for-the-badge" alt="Add to Chrome" />
+    <img src="https://img.shields.io/chrome-web-store/v/dmhnnfkppbobolkngkblakklfhigbidh?wlabel=Add%20to%20Chrome&color=1a73e8&logo=googlechrome&logoColor=white&style=for-the-badge" alt="Add to Chrome" />
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://www.producthunt.com/products/contxtai?utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-contxtai" target="_blank">

@@ -282,6 +282,14 @@ ContxtAI is designed to be highly extensible. You can contribute without touchin
 
 - **Improve the Core Engine:** Help us build V2 features like SQLite WASM integration and Local MiniLM Embeddings for semantic retrieval.
 
+- We're also exploring a few big features :
+
+1) **Personas:** Pre-configured persona profiles for tailored AI behaviors
+
+2) **Prompt Templates:** Reusable structured templates for common workflows
+
+3) **Centralized / Git-like Versioning DB:** Tracking, branching, and syncing context changes over time
+
 Please read our [Documentation](ContxtAI_Documentation.md) for a deep dive into the architecture before contributing.
 
 ---
